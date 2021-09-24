@@ -24,7 +24,6 @@ private:
 
 public:
     pimage(string img);
-    QRgb promcolor(QRgb color1, QRgb color2);
     void resize();
     void colors();
     void escribir();
