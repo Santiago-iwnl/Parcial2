@@ -52,6 +52,12 @@ void pimage::colors() //Función que permite extraer los colores de la imagen re
                 green = 254;
                 blue = 254;
             }
+
+            if((red == 0) && (green == 0) && (blue == 0)){
+                red = 100;
+                green = 100;
+                blue = 100;
+            }
             matriz[0][f][c] = red;
             matriz[1][f][c] = green;
             matriz[2][f][c] = blue;
