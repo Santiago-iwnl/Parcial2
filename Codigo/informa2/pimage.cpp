@@ -12,7 +12,8 @@ pimage::pimage(string img)
 
 void pimage::resize()
 {
-    //Método del vecino más cercano
+    int posx = 0, posy = 0;
+    float  posX = 0, posY = 0;
     fw = image.width()/leds;
     fh = image.height()/leds;
     w = round(image.width()/fw);
@@ -22,26 +23,25 @@ void pimage::resize()
 
     for(int m = 0; m < h; m++){
         for(int f = 0; f < w; f++){
-            X = f*fw;
-            Y = m*fh;
-            x = X;
-            y = Y;
-            if((X-x > 0.5) && (x+1 < w)){
-                x += 1;
-                if((Y-y > 0.5) && (y+1 < h)) y += 1;
+            posX = f*fw;
+            posY = m*fh;
+            posx = posX;
+            posy = posY;
+            if((posX-posx > 0.5) && (posx+1 < w)){
+                posx += 1;
+                if((posY-posy > 0.5) && (posy+1 < h)) posy += 1;
             }
-            imageE->setPixel(f,m,image.pixel(x,y));
+            imageE->setPixel(f,m,image.pixel(posx,posy));
         }
     }
     imageE->save("imagenescalada.jpg");
-
-
 }
 
 
 
 void pimage::colors() //Función que permite extraer los colores de la imagen redimensionada
 {
+    int red = 0, green = 0, blue = 0;
     for(int f = 0; f < imageE->height(); f++){
         for(int c = 0; c < imageE->width(); c++){
             red = imageE->pixelColor(c,f).red();
@@ -62,7 +62,7 @@ void pimage::colors() //Función que permite extraer los colores de la imagen re
 void pimage::escribir()
 {
     ofstream archivo;
-    archivo.open("Datos.txt", ios::out);
+    archivo.open("DatosM.txt", ios::out);
 
     archivo << "{" << endl;
     for(int f = 0; f < 3; f++){
@@ -80,7 +80,6 @@ void pimage::escribir()
         if(f < 2) archivo << "}," << endl;
         else archivo << "}" << endl;
     }
-
     archivo << "};";
     archivo.close();
 }
