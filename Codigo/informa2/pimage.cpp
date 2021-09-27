@@ -13,7 +13,7 @@ pimage::pimage(string img)
 void pimage::resize()
 {
     int posx = 0, posy = 0;
-    float  posX = 0, posY = 0;
+    float  posX = 0, posY = 0, leds = 16;
     fw = image.width()/leds;
     fh = image.height()/leds;
     w = round(image.width()/fw);

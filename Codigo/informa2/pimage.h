@@ -19,7 +19,7 @@ private:
     QImage image, *imageE;
     int w = 0, h = 0;
     int matriz[filas][pixeles][pixeles];
-    float leds = 16, fw = 1.0,fh = 1.0;
+    float fw = 1.0,fh = 1.0;
 
 public:
     pimage(string img);
